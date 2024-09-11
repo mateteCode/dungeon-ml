@@ -7,8 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _characterSpeed = 6f;
     [SerializeField] private float _turnSmoothVelocity = 0.2f;
-
-       
+           
     CharacterController _character;
     Animator _anim;
 
@@ -22,14 +21,12 @@ public class PlayerController : MonoBehaviour
     float _gravity = -9.8f;
     float _velocity;
 
-    // Start is called before the first frame update
     void Start()
     {
         _character = GetComponent<CharacterController>();
         _anim = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         //apply gravity so character can always be on floor
