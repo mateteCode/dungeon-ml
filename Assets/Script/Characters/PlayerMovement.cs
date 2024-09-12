@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
         if (!_character.isGrounded)
         {
             _velocity = _gravity * Time.deltaTime;
-
         }
         else
         {
