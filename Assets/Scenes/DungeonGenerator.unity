@@ -421,8 +421,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cec8f0db4324fb468e95ae1b99165a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dungeonSize: {x: 10, y: 5}
-  _startPos: 0
+  _dungeonSize: {x: 3, y: 3}
+  _startPos: 3
   _rooms:
   - {fileID: 8850627933324447331, guid: 6a634feca6469c14bbce4bb3db4c1d9d, type: 3}
   - {fileID: 7594267549774512874, guid: b66639a21481bf64fa959f154628bf72, type: 3}
@@ -539,6 +539,10 @@ PrefabInstance:
         type: 3}
       insertIndex: 2
       addedObject: {fileID: 561889964}
+    - targetCorrespondingSourceObject: {fileID: 7479515856800647122, guid: 07864611a67521545b4725199b5bf9ce,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 561889965}
   m_SourcePrefab: {fileID: 100100000, guid: 07864611a67521545b4725199b5bf9ce, type: 3}
 --- !u!4 &561889959 stripped
 Transform:
@@ -573,6 +577,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &561889965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561889960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978d4c320e131ac429ab665e8d8c5d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterSpeed: 4
+  _turnSmoothVelocity: 0.2
 --- !u!1 &716844495
 GameObject:
   m_ObjectHideFlags: 0
