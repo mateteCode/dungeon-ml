@@ -3,48 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomFactory : MonoBehaviour
+public class RoomFactory
 {
-   // [SerializeField] private Room _roomZero;
-   // [SerializeField] private Room _roomOne;
-    //private Dictionary< string, Room> _roomsDictionary;
+    readonly RoomConfiguration _roomConfiguration;
 
-    [SerializeField] private Room[] _rooms;
-    
-
-    private void Awake() 
+    public RoomFactory(RoomConfiguration roomConfiguration)
     {
-        /*_roomsDictionary = new Dictionary< string, Room>();
-       
-        foreach (var room in _rooms)
-        {
-            _roomsDictionary.Add(room.IdRoom, room);
-        }*/
+        _roomConfiguration = roomConfiguration;
     }
 
-    /*public Room Create(string _idRoom)
+
+    public Room Create(string id)
     {
-
-        if(!_roomsDictionary.TryGetValue(_idRoom, out Room room))
-        {
-            throw new Exception($"Room with id {_idRoom} does not exist");
-            
-        }
-
-        return Instantiate(room);
-
-    */
-     /*   switch (_idRoom)
-        {
-            case "roomZero":
-                return Instantiate(_roomZero);
-                
-            case "roomOne":
-                return Instantiate(_roomOne);
-            
-            default:
-                return null;
-        }
-    
-    }*/
+        var prefab = _roomConfiguration.GetRoomPrefabById(id);
+        //return UnityEngine.Object.Instantiate(prefab);
+        return prefab;
+    }
 }

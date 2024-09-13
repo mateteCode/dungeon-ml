@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Room : MonoBehaviour
 {
-    [SerializeField] private string _idRoom;
+    [SerializeField] private string _id;
 
-    public string IdRoom {get { return _idRoom;}}
+    public string Id => _id;
 }

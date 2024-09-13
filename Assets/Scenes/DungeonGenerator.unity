@@ -432,7 +432,8 @@ MonoBehaviour:
   - {fileID: 7376236473636588162, guid: 4a235b40a5deaa540afc28a85f1fa0c2, type: 3}
   - {fileID: 6690784387871616835, guid: cc3d5b9f190cf3a408fa57982e9d3a9a, type: 3}
   - {fileID: 1008839740442041324, guid: 3c39ebe4f6fecc84c8f6c6160e4784bb, type: 3}
-  offset: {x: 6, y: 6}
+  _offset: {x: 6, y: 6}
+  _roomConfiguration: {fileID: 11400000, guid: 43c216196a8b2534bbe0267dac663081, type: 2}
 --- !u!4 &440301668
 Transform:
   m_ObjectHideFlags: 0
@@ -543,6 +544,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 561889965}
+    - targetCorrespondingSourceObject: {fileID: 7479515856800647122, guid: 07864611a67521545b4725199b5bf9ce,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 561889970}
   m_SourcePrefab: {fileID: 100100000, guid: 07864611a67521545b4725199b5bf9ce, type: 3}
 --- !u!4 &561889959 stripped
 Transform:
@@ -591,6 +596,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterSpeed: 4
   _turnSmoothVelocity: 0.2
+--- !u!114 &561889970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561889960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa2f44569ad261a4bbaa1f4431d95063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &716844495
 GameObject:
   m_ObjectHideFlags: 0
