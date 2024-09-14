@@ -5,34 +5,25 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DungeonGenerator : MonoBehaviour
-{
-    
-    [SerializeField] Vector2 _dungeonSize;
-    [SerializeField] int _startPos = 0;
-
-    [SerializeField] GameObject[] _rooms;
-    [SerializeField] Vector2 _offset;
-
+{  
     [SerializeField] RoomConfiguration _roomConfiguration;
 
-    BoardManager _boardManager;
-    MazeManager _mazeManager;
-    DungeonManager _dungeonManager;
+    IBoardCreatable _boardManager;
+    ICreatable _mazeManager;
+    ICreatable _dungeonManager;
 
     private void Awake()
     {
-        _boardManager = new BoardManager(_dungeonSize);
-        _mazeManager = new MazeManager(_boardManager, _dungeonSize);
-        _dungeonManager = new DungeonManager(_dungeonSize, _boardManager, _offset, _rooms, _roomConfiguration);
+        _boardManager = new BoardManager(_roomConfiguration);
+        _mazeManager = new MazeManager(_boardManager, _roomConfiguration);
+        _dungeonManager = new DungeonManager(_boardManager, _roomConfiguration);
     }
-
 
     void Start()
     {
         MazeGenerator();
     }
 
-    
 
     public void MazeGenerator()
     {
@@ -40,19 +31,12 @@ public class DungeonGenerator : MonoBehaviour
         _boardManager.Create();
 
         //Create Dungeon Maze
-        _mazeManager.Create(_startPos);
+        _mazeManager.Create();
 
         //Instantiate rooms
         _dungeonManager.Create();
       
     }
-
-
-
-    
-    
-    
-
 
     private void OnGUI() 
     {

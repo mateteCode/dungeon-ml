@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MazeManager
+public class MazeManager : ICreatable
 {
-    BoardManager _boardManager;
-    Vector2 _dungeonSize;
-    public MazeManager(BoardManager boardManager, Vector2 dungeonSize)
+    IBoardCreatable _boardManager;
+    IDungeonConfiguration _roomConfiguration;
+    public MazeManager(IBoardCreatable boardManager, IDungeonConfiguration roomConfiguration)
     {
         _boardManager = boardManager;
-        _dungeonSize = dungeonSize;
+        _roomConfiguration = roomConfiguration;
     }
 
-    public void Create(int startPos)
+    public void Create()
     {
         //StarPosition determina el casillero donde el arranca el Dungeon
-        int currentCell = startPos;
+        int currentCell = _roomConfiguration.StartPos;
 
         //Generamos la Pila(Stack) donde armaremos el Laberinto
         Stack<int> path = new Stack<int>();

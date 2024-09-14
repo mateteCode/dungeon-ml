@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         _anim.SetBool("Defense", _playerInput.Defense);
 
         // Movement
-        _playerMovement.Move(_playerInput.Direction);
+         _playerMovement.Move(_playerInput.Direction, _playerInput.Run);
     }
 
 }

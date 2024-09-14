@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _characterSpeed = 4f;
     [SerializeField] private float _turnSmoothVelocity = 0.2f;
+    [SerializeField] private float _runSpeedMultiplier = 1.5f;
     CharacterController _character;
     float _gravity = -9.8f;
     float _velocity;
@@ -31,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Move(Vector2 direction)
+    public void Move(Vector2 direction, bool isRunning)
     {
         if (direction.magnitude >= 0.1f)
         {
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(0f, _characterAngle, 0f);
             Vector3 movement = new Vector3(direction.x, _velocity, direction.y);
-            _character.SimpleMove(movement * _characterSpeed);
+            _character.SimpleMove(movement * _characterSpeed * (isRunning ? _runSpeedMultiplier : 1));
         }
     }
 }
