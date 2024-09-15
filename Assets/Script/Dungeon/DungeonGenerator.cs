@@ -35,7 +35,6 @@ public class DungeonGenerator : MonoBehaviour
 
         //Instantiate rooms
         _dungeonManager.Create();
-      
     }
 
     private void OnGUI() 

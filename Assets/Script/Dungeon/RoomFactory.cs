@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomFactory
+public class RoomFactory: IFactory<Room>
 {
     readonly RoomConfiguration _roomConfiguration;
 
@@ -12,11 +12,8 @@ public class RoomFactory
         _roomConfiguration = roomConfiguration;
     }
 
-
     public Room Create(string id)
     {
-        var prefab = _roomConfiguration.GetRoomPrefabById(id);
-        //return UnityEngine.Object.Instantiate(prefab);
-        return prefab;
+        return _roomConfiguration.GetRoomPrefabById(id);
     }
 }
