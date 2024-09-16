@@ -9,6 +9,12 @@ public class RoomConfiguration : ScriptableObject, IDungeonConfiguration
     [SerializeField] Room[] _rooms;
     private Dictionary<string, Room> _idToRoom;
 
+    [SerializeField] GameObject _bossPointPrefab;
+    public GameObject BossPointPrefab => _bossPointPrefab;
+
+    [SerializeField] GameObject _startPointPrefab;
+    public GameObject StartPointPrefab => _startPointPrefab;
+
     [SerializeField] Vector2 _size;
     public Vector2 Size => _size;
 
@@ -66,7 +72,24 @@ public class RoomConfiguration : ScriptableObject, IDungeonConfiguration
     public Vector3 GetPosition(int cell)
     {
         float x = (cell % Size.x) * Offset.x;
-        float y = - (float) Math.Floor(cell / Size.y) * Offset.y;
+        float y = - (float) Math.Floor(cell / Size.x) * Offset.y;
+        Debug.Log($"La celda {cell} se posiciona en {x}, {y}");
         return new Vector3(x, 0, y);
     }
+
+    public void CreateCheckPoints()
+    {
+        if (BossPointPrefab != null)
+        {
+            Vector3 position = GetPosition(EndPos);
+            Instantiate(_bossPointPrefab, new Vector3(position.x, 1.5f, position.z), Quaternion.identity);
+        }
+        if (StartPointPrefab != null)
+        {
+            Vector3 position = GetPosition(StartPos);
+            Instantiate(_startPointPrefab, new Vector3(position.x, 1.5f, position.z), Quaternion.identity);
+        }
+
+    }
+
 }

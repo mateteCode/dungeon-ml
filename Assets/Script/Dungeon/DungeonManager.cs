@@ -6,9 +6,9 @@ using UnityEngine;
 public class DungeonManager : ICreatable
 {
     IBoardCreatable _boardManager;
-    IDungeonConfiguration _roomConfiguration;
+    RoomConfiguration _roomConfiguration;
     IFactory<Room> _roomFactory;
-    public DungeonManager(IBoardCreatable boardManager, IDungeonConfiguration roomConfiguration)
+    public DungeonManager(IBoardCreatable boardManager, RoomConfiguration roomConfiguration)
     {
         _boardManager = boardManager;
         _roomConfiguration = roomConfiguration;
@@ -35,6 +35,7 @@ public class DungeonManager : ICreatable
             }
                 
         }
+        _roomConfiguration.CreateCheckPoints();
     }
 
 }

@@ -8,9 +8,12 @@ public class GameManager: MonoBehaviour
 {
     public static GameManager Instance;
     [SerializeField] DungeonGenerator generator;
-    [SerializeField] GameObject player;
+    [SerializeField] GameObject _playerPrefab;
     public event Action OnPlayerShowed;
     GameState _gameState;
+    public GameState GameState => _gameState;
+    GameObject _player;
+    CameraController _mainCameraController;
 
     private void Awake()
     {
@@ -34,13 +37,14 @@ public class GameManager: MonoBehaviour
 
     void Start()
     {
-        generator = generator.GetComponent<DungeonGenerator>();
+        _mainCameraController = Camera.main.gameObject.GetComponent<CameraController>();
+       generator = generator.GetComponent<DungeonGenerator>();
         generator?.MazeGenerator();
     }
        
     public void ShowPlayer(Vector3 position)
     {
-        Instantiate(player, position, Quaternion.identity);
+        _player = Instantiate(_playerPrefab, position, Quaternion.identity);
         OnPlayerShowed?.Invoke();
     }
 
@@ -78,6 +82,8 @@ public class GameManager: MonoBehaviour
 
     void Play()
     {
-
+        _mainCameraController.Target = _player;
+        GameObject [] checkPoints = GameObject.FindGameObjectsWithTag("CheckPoint");
+        foreach(GameObject checkPoint in checkPoints) Destroy(checkPoint);
     }
 }
