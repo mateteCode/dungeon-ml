@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,5 +48,21 @@ public class RoomConfiguration : ScriptableObject, IDungeonConfiguration
             throw new System.Exception($"Room with index {index} does not exit");
         }
         return _rooms[index];
+    }
+
+    void OnValidate()
+    {
+        int size = (int)_size.x * (int)_size.y;
+        if (EndPos >= size)
+        {
+            _endPos = size - 1;
+        }
+    }
+
+    public Vector3 GetPosition(int cell)
+    {
+        float x = (cell % Size.x) * Offset.x;
+        float y = - (float) Math.Floor(cell / Size.y) * Offset.y;
+        return new Vector3(x, 0, y);
     }
 }

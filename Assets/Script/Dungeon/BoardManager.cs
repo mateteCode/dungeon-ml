@@ -50,7 +50,7 @@ public class BoardManager : IBoardCreatable
         {
             neighbors.Add(Mathf.FloorToInt(cell - 1));
         }
-        Debug.Log($"Celda {cell} tiene vecinos vacios en {System.String.Join(", ", neighbors)}");
+        //Debug.Log($"Celda {cell} tiene vecinos vacios en {System.String.Join(", ", neighbors)}");
         return neighbors;
     }
 }

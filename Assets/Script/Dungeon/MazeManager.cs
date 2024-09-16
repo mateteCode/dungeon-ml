@@ -30,7 +30,8 @@ public class MazeManager : ICreatable
 
             //si se alcanza la celda de salida
             //ser termina el bucle
-            if (currentCell == _boardManager.Board.Count - 1)
+            //if (currentCell == _boardManager.Board.Count - 1)
+            if(currentCell == _roomConfiguration.EndPos)
             {
                 break;
             }

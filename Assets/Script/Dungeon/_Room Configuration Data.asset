@@ -21,7 +21,7 @@ MonoBehaviour:
   - {fileID: -9047587873341965728, guid: 4a235b40a5deaa540afc28a85f1fa0c2, type: 3}
   - {fileID: 1454941574147485567, guid: cc3d5b9f190cf3a408fa57982e9d3a9a, type: 3}
   - {fileID: 5391878727558884438, guid: 3c39ebe4f6fecc84c8f6c6160e4784bb, type: 3}
-  _size: {x: 3, y: 3}
-  _startPos: 0
+  _size: {x: 3, y: 4}
+  _startPos: 3
   _endPos: 8
   _offset: {x: 6, y: 6}

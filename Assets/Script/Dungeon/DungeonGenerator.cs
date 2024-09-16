@@ -1,4 +1,5 @@
 //using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,10 @@ using UnityEngine.SceneManagement;
 public class DungeonGenerator : MonoBehaviour
 {  
     [SerializeField] RoomConfiguration _roomConfiguration;
-
     IBoardCreatable _boardManager;
     ICreatable _mazeManager;
     ICreatable _dungeonManager;
+    public event Action<Vector3> OnMazeCreated;
 
     private void Awake()
     {
@@ -18,12 +19,6 @@ public class DungeonGenerator : MonoBehaviour
         _mazeManager = new MazeManager(_boardManager, _roomConfiguration);
         _dungeonManager = new DungeonManager(_boardManager, _roomConfiguration);
     }
-
-    void Start()
-    {
-        MazeGenerator();
-    }
-
 
     public void MazeGenerator()
     {
@@ -35,21 +30,11 @@ public class DungeonGenerator : MonoBehaviour
 
         //Instantiate rooms
         _dungeonManager.Create();
+
+        //Avisames a los subcriptores que el laberinto se ha creado completamnete
+        OnMazeCreated?.Invoke(_roomConfiguration.GetPosition(_roomConfiguration.StartPos));
     }
 
-    private void OnGUI() 
-    {
-        float w = Screen.width/2;
-        float h = Screen.height - 80;
-        if(GUI.Button(new Rect(w,h,250,50), "Regenerate Dungeon"))
-        {
-            RegenerateDungeon();
-        }
-    }
-
-    void RegenerateDungeon()
-    {
-       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    
     
 }
