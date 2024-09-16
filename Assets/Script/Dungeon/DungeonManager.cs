@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class DungeonManager : ICreatable
@@ -15,23 +16,25 @@ public class DungeonManager : ICreatable
     }
     public void Create()
     {
-        for (int i = 0; i < _roomConfiguration.Size.x; i++)
+        for(int idx=0; idx<_boardManager.Board.Count; idx++)
         {
-            for (int j = 0; j < _roomConfiguration.Size.y; j++)
+            Cell currentCell = _boardManager.Board[idx];
+            if (currentCell.Visited)
             {
-                Cell currentCell = _boardManager.Board[Mathf.FloorToInt(i + j * _roomConfiguration.Size.x)];
+                Room room;
+                if (idx == _roomConfiguration.StartPos)
+                    room = _roomFactory.Create("StartRoom");
+                else if (idx == _roomConfiguration.EndPos)
+                    room = _roomFactory.Create("EndRoom");
+                else                    
+                    room = _roomFactory.Create();
 
-                if (currentCell.Visited)
-                {
-                    int randomRoom = Random.Range(0, _roomConfiguration.PrefabsCount);
-                    Room newRoom = Object.Instantiate(_roomFactory.Create(randomRoom.ToString()), new Vector3(i * _roomConfiguration.Offset.x, 0f, -j * _roomConfiguration.Offset.y), Quaternion.identity);
-                    RoomBehaviour rb = newRoom.gameObject.GetComponent<RoomBehaviour>();
-                    rb.UpdateRoom(currentCell.DoorStatus);
-                }
+                Room createdRoom = Object.Instantiate(room, _roomConfiguration.GetPosition(idx), Quaternion.identity);
+                RoomBehaviour rb = createdRoom.gameObject.GetComponent<RoomBehaviour>();
+                rb.UpdateRoom(currentCell.DoorStatus);
             }
+                
         }
-        Debug.Log(_boardManager.Board.Count);
-
     }
 
 }

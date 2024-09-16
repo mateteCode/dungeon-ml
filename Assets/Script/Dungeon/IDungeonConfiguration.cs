@@ -14,4 +14,6 @@ public interface IDungeonConfiguration
     Room GetRoomPrefabById(string id);
     Room GetRoomPrefabByIndex(int index);
 
+    Vector3 GetPosition(int index);
+
 }

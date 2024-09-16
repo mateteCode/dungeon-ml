@@ -57,6 +57,10 @@ public class RoomConfiguration : ScriptableObject, IDungeonConfiguration
         {
             _endPos = size - 1;
         }
+        if(StartPos >= size)
+        {
+            _startPos = 0;
+        }
     }
 
     public Vector3 GetPosition(int cell)

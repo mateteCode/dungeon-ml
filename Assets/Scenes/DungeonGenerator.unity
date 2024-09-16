@@ -400,7 +400,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 440301668}
-  - component: {fileID: 440301667}
+  - component: {fileID: 440301669}
   m_Layer: 0
   m_Name: Dungeon
   m_TagString: Untagged
@@ -408,19 +408,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &440301667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 440301666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cec8f0db4324fb468e95ae1b99165a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _roomConfiguration: {fileID: 11400000, guid: 43c216196a8b2534bbe0267dac663081, type: 2}
 --- !u!4 &440301668
 Transform:
   m_ObjectHideFlags: 0
@@ -436,6 +423,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &440301669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440301666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cec8f0db4324fb468e95ae1b99165a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _roomConfiguration: {fileID: 11400000, guid: 43c216196a8b2534bbe0267dac663081, type: 2}
 --- !u!1 &716844495
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d89fbe400d2f942879023871748de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generator: {fileID: 440301667}
+  generator: {fileID: 440301669}
   player: {fileID: 7479515856800647122, guid: 07864611a67521545b4725199b5bf9ce, type: 3}
 --- !u!4 &1145252374
 Transform:

@@ -17,7 +17,6 @@ public class GameManager: MonoBehaviour
         if (!Instance)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
         _gameState = GameState.GENERATING;
@@ -41,7 +40,6 @@ public class GameManager: MonoBehaviour
        
     public void ShowPlayer(Vector3 position)
     {
-        Debug.Log($"Se va a instanciar el player en {position.x}, {position.z}");
         Instantiate(player, position, Quaternion.identity);
         OnPlayerShowed?.Invoke();
     }

@@ -23,9 +23,7 @@ public class PlayerAttack : MonoBehaviour
         if(_damagablesInRange.Count >= 1)
         {
             this.transform.LookAt(toLook);
-           
             _damagablesInRange[0].Damage(10);
-          
             _anim.SetTrigger("SimpleAttack");
         }
     }
@@ -42,8 +40,6 @@ public class PlayerAttack : MonoBehaviour
         if(damagable != null)
         {
             _damagablesInRange?.Add(damagable);
-           // Debug.Log("Damagable Add " + other.name);
-            //Debug.Log("Damagables in Range " + _damagablesInRange.Count); 
         }    
     }
 
@@ -54,8 +50,6 @@ public class PlayerAttack : MonoBehaviour
         if(damagable != null && _damagablesInRange.Contains(damagable))
         {
             _damagablesInRange?.Remove(damagable);
-           // Debug.Log("Damagable Add " + other.name);
-            //Debug.Log("Damagables in Range " + _damagablesInRange.Count); 
         }    
     }
 

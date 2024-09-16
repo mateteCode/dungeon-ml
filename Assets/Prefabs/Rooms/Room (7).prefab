@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f773a8f60fe180b48a244ace0b9714a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 7
   walls:
   - {fileID: 3447671505667156391}
   - {fileID: 5693995070665350581}
@@ -73,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edd1cb423f94634c84456bfe33b6c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 7
+  _id: EndRoom
 --- !u!1 &1232970236896200176
 GameObject:
   m_ObjectHideFlags: 0

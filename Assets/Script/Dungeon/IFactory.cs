@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IFactory<T1>
+public interface IFactory<T>
 {
-    T1 Create(string id);
+    T Create(string id);
+    T Create();
 }

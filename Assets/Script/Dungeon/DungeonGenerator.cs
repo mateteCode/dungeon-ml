@@ -31,7 +31,7 @@ public class DungeonGenerator : MonoBehaviour
         //Instantiate rooms
         _dungeonManager.Create();
 
-        //Avisames a los subcriptores que el laberinto se ha creado completamnete
+        //Avisames a los subcriptores que el laberinto se ha creado y se indica la posición de comienzo
         OnMazeCreated?.Invoke(_roomConfiguration.GetPosition(_roomConfiguration.StartPos));
     }
 

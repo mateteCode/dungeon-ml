@@ -16,7 +16,6 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        //transform.position = _followTarget.position + _cameraOffset;
         if (_target != null)
         {
             transform.position = _target.transform.position + _cameraOffset;
@@ -26,7 +25,7 @@ public class CameraController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.OnPlayerShowed += TargetToPlayer;
+        //GameManager.Instance.OnPlayerShowed += TargetToPlayer;
     }
 
 
