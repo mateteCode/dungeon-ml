@@ -44,8 +44,10 @@ public class GameManager: MonoBehaviour
        
     public void ShowPlayer(Vector3 position)
     {
+        _mainCameraController.TargetToMaze();
+        //_mainCameraController.Target = GameObject.FindGameObjectWithTag("CenterOfMaze");
         _player = Instantiate(_playerPrefab, position, Quaternion.identity);
-        OnPlayerShowed?.Invoke();
+        //OnPlayerShowed?.Invoke();
     }
 
     private void OnGUI()
@@ -82,8 +84,10 @@ public class GameManager: MonoBehaviour
 
     void Play()
     {
-        _mainCameraController.Target = _player;
+        //_mainCameraController.Target = _player;
+        _mainCameraController.TargetToPlayer();
         GameObject [] checkPoints = GameObject.FindGameObjectsWithTag("CheckPoint");
         foreach(GameObject checkPoint in checkPoints) Destroy(checkPoint);
     }
+
 }

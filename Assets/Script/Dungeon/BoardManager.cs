@@ -20,6 +20,7 @@ public class BoardManager : IBoardCreatable
         {
             Board.Add(new Cell());
         }
+        CreatePoints();
     }
 
     //Chequea las celdas vecinas
@@ -52,5 +53,16 @@ public class BoardManager : IBoardCreatable
         }
         Debug.Log($"Celda {cell} tiene vecinos vacios en {System.String.Join(", ", neighbors)}");
         return neighbors;
+    }
+
+    private void CreatePoints()
+    {
+        float x = ((int)_roomConfiguration.Size.x / 2) * _roomConfiguration.Offset.x;
+        float y = ((int)_roomConfiguration.Size.y / 2) * _roomConfiguration.Offset.y + _roomConfiguration.Offset.y;
+        float zoom = -0.0043f * _roomConfiguration.Size.y * _roomConfiguration.Size.y + 5.35f * _roomConfiguration.Size.y - 30.7f;
+        GameObject newObject = new GameObject("CenterOfMaze");
+        newObject.transform.position = new Vector3(x, zoom, -y);
+        Debug.Log($"COM {x}, {y}");
+        newObject.tag = "CenterOfMaze";
     }
 }

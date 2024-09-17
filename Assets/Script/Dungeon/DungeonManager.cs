@@ -36,6 +36,7 @@ public class DungeonManager : ICreatable
                 
         }
         _roomConfiguration.CreateCheckPoints();
+        
     }
 
 }
