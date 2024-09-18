@@ -15,6 +15,8 @@ public class GameManager: MonoBehaviour
     GameObject _player;
     CameraController _mainCameraController;
 
+    GUIStyle _buttonStyle;
+
     private void Awake()
     {
         if (!Instance)
@@ -40,35 +42,40 @@ public class GameManager: MonoBehaviour
         _mainCameraController = Camera.main.gameObject.GetComponent<CameraController>();
        generator = generator.GetComponent<DungeonGenerator>();
         generator?.MazeGenerator();
+        
     }
        
     public void ShowPlayer(Vector3 position)
     {
         _mainCameraController.TargetToMaze();
-        //_mainCameraController.Target = GameObject.FindGameObjectWithTag("CenterOfMaze");
         _player = Instantiate(_playerPrefab, position, Quaternion.identity);
-        //OnPlayerShowed?.Invoke();
     }
 
     private void OnGUI()
     {
+        if(_buttonStyle == null)
+        {
+            _buttonStyle = new GUIStyle(GUI.skin.button);
+            _buttonStyle.fontSize = 24;
+        }
+
         float w = Screen.width / 2;
-        float h = Screen.height - 80;
+        float h = Screen.height - 120;
         switch(_gameState)
         {
             case GameState.GENERATING:
-                if (GUI.Button(new Rect(w, h, 250, 50), "Regenerate Dungeon"))
+                if (GUI.Button(new Rect(w, h, 400, 80), "Regenerate Dungeon", _buttonStyle))
                 {
                     RegenerateDungeon();
                 }
-                if (GUI.Button(new Rect(w/2, h, 250, 50), "Play"))
+                if (GUI.Button(new Rect(w/2, h, 400, 80), "Play", _buttonStyle))
                 {
                     _gameState = GameState.PLAYING;
                     Play();
                 }
                 break;
             case GameState.PLAYING:
-                if (GUI.Button(new Rect(w / 2, h, 250, 50), "Return to Main Menu"))
+                if (GUI.Button(new Rect(w / 2, h, 400, 80), "Return to Main Menu", _buttonStyle))
                 {
                     _gameState = GameState.GENERATING;
                 }
@@ -84,7 +91,6 @@ public class GameManager: MonoBehaviour
 
     void Play()
     {
-        //_mainCameraController.Target = _player;
         _mainCameraController.TargetToPlayer();
         GameObject [] checkPoints = GameObject.FindGameObjectsWithTag("CheckPoint");
         foreach(GameObject checkPoint in checkPoints) Destroy(checkPoint);
